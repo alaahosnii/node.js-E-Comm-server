@@ -1,3 +1,4 @@
+const { log } = require("console");
 const fs = require("fs");
 const { title } = require("process");
 // if (fs.existsSync("./todos.json")) {
@@ -14,20 +15,24 @@ const addTodo = (todo) => {
     return todo;
 };
 
-const getTodoById = (id) => {
-    const todos = JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
-    const todo = todos.find((todo) => todo.id == id);
-    return todo;
+const getProductById = (id) => {
+    const products = JSON.parse(fs.readFileSync("./products.json", "utf-8"));
+    const product = products.find((product) => product.id == id);
+    return product;
 };
 
 const createFileIfNotExist = () => {
-    if (!fs.existsSync("./todos.json")) {
-        fs.writeFileSync("./todos.json", JSON.stringify([]));
+    console.log("create");
+    
+    if (!fs.existsSync("./products.json")) {
+        console.log("not");
+        
+        fs.writeFileSync("./products.json", JSON.stringify([]));
     }
 };
 
 const writeTodos = (todos) => {
-    fs.writeFileSync("./todos.json", JSON.stringify(todos));
+    fs.writeFileSync("./products.json", JSON.stringify(todos));
 };
 
 const edit = (editedTodo, todoId) => {
@@ -70,27 +75,32 @@ const unCheckTask = (todoId) => {
     writeTodos(updatedTodos);
 }
 
-const list = (query) => {
-    const todos = JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
-
-    switch (query) {
-        case "":
-            return JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
-        case "all":
-            return JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
-
-        case "checked":
-            const checkedTodos = todos.filter((todo) => todo.checked == true);
-            return checkedTodos;
-
-        case "unchecked":
-            const unCheckedTodos = todos.filter((todo) => todo.checked == false);
-            return unCheckedTodos;
-
-        default:
-            break;
+const getProducts = (query) => {
+    if (!query) {
+        return JSON.parse(fs.readFileSync("./products.json", "utf-8"));
     }
 }
+// const list = (query) => {
+//     const todos = JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
+
+//     switch (query) {
+//         case "":
+//             return JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
+//         case "all":
+//             return JSON.parse(fs.readFileSync("./todos.json", "utf-8"));
+
+//         case "checked":
+//             const checkedTodos = todos.filter((todo) => todo.checked == true);
+//             return checkedTodos;
+
+//         case "unchecked":
+//             const unCheckedTodos = todos.filter((todo) => todo.checked == false);
+//             return unCheckedTodos;
+
+//         default:
+//             break;
+//     }
+// }
 
 
-module.exports = { addTodo, edit, createFileIfNotExist, getTodoById, deleteTask, checkTask, unCheckTask, list };
+module.exports = {getProducts , getProductById , addTodo, edit, createFileIfNotExist, deleteTask, checkTask, unCheckTask };

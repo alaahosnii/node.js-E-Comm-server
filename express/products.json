@@ -1,0 +1,242 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Earbuds",
+        "description": "Noise-cancelling wireless earbuds.",
+        "price": 49.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693418/41DkedEmQFL._AC_UF894_1000_QL80__x7pu5b.jpg",
+        "category": "Audio"
+    },
+    {
+        "id": 2,
+        "name": "Smart Watch",
+        "description": "Water-resistant smart watch.",
+        "price": 129.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693340/613vdOoh4oL._AC_SL1500__hw5mfi.jpg",
+        "category": "Wearable Technology"
+    },
+    {
+        "id": 3,
+        "name": "Laptop Backpack",
+        "description": "Ergonomic laptop backpack.",
+        "price": 39.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693340/images_ugwehy.jpg",
+        "category": "Accessories"
+    },
+    {
+        "id": 4,
+        "name": "Gaming Mouse",
+        "description": "High-precision gaming mouse.",
+        "price": 29.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693340/61Mk3YqYHpL_zwd7if.jpg",
+        "category": "Gaming"
+    },
+    {
+        "id": 5,
+        "name": "Bluetooth Speaker",
+        "description": "Portable Bluetooth speaker.",
+        "price": 59.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/images-2_gwqivv.jpg",
+        "category": "Audio"
+    },
+    {
+        "id": 6,
+        "name": "Fitness Tracker",
+        "description": "Activity and sleep tracker.",
+        "price": 74.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/images-4_shsvft.jpg",
+        "category": "Wearable Technology"
+    },
+    {
+        "id": 7,
+        "name": "4K Monitor",
+        "description": "Ultra HD 4K monitor.",
+        "price": 399.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/images-4_shsvft.jpg",
+        "category": "Computers & Accessories"
+    },
+    {
+        "id": 8,
+        "name": "Mechanical Keyboard",
+        "description": "RGB mechanical keyboard.",
+        "price": 89.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/71fRP7KY9hL._AC_SL1500__vd4nha.jpg",
+        "category": "Gaming"
+    },
+    {
+        "id": 9,
+        "name": "VR Headset",
+        "description": "Virtual reality headset.",
+        "price": 299.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/41mz-5am4AL._AC_UF894_1000_QL80__bsjwkl.jpg",
+        "category": "Gaming"
+    },
+    {
+        "id": 10,
+        "name": "Wireless Charger",
+        "description": "Fast wireless charging pad.",
+        "price": 19.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693339/61oIAKY9s1L_polx1a.jpg",
+        "category": "Accessories"
+    },
+    {
+        "id": 11,
+        "name": "Smartphone Gimbal",
+        "description": "Stabilizer for smartphone videos.",
+        "price": 99.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693337/images-5_apzdc6.jpg",
+        "category": "Photography & Videography"
+    },
+    {
+        "id": 12,
+        "name": "Portable SSD",
+        "description": "1TB external portable SSD.",
+        "price": 149.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/71bBCTIvIIL._AC_UF894_1000_QL80__dlergd.jpg",
+        "category": "Storage"
+    },
+    {
+        "id": 13,
+        "name": "Smart Light Bulb",
+        "description": "Wi-Fi enabled smart bulb.",
+        "price": 14.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/images-6_a2urkd.jpg",
+        "category": "Smart Home"
+    },
+    {
+        "id": 14,
+        "name": "Action Camera",
+        "description": "4K waterproof action camera.",
+        "price": 199.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/images-7_bqa4zz.jpg",
+        "category": "Photography & Videography"
+    },
+    {
+        "id": 15,
+        "name": "Noise Cancelling Headphones",
+        "description": "Over-ear noise cancelling headphones.",
+        "price": 249.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/51QeS0jkx-L._AC_UF894_1000_QL80__towptj.jpg",
+        "category": "Audio"
+    },
+    {
+        "id": 16,
+        "name": "Smart Thermostat",
+        "description": "Wi-Fi enabled smart thermostat.",
+        "price": 199.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/71DjbVCD_dL._AC_SL1500__myzz5a.jpg",
+        "category": "Smart Home"
+    },
+    {
+        "id": 17,
+        "name": "Drone",
+        "description": "4K camera drone with GPS.",
+        "price": 599.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/images-8_pmla2q.jpg",
+        "category": "Photography & Videography"
+    },
+    {
+        "id": 18,
+        "name": "Robot Vacuum",
+        "description": "Smart robot vacuum cleaner.",
+        "price": 299.99,
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693336/Lingouzi-Automatic-Robot-Vacuum-Cleaner-Bot-Self-Detects-Stairs-Pet-Hair-Allergies-Robotic-Home-Cleaning-For-Carpet-Hardwood-Tile-Floor_d770e68b-9243-4089-b095-c8edbf1fcd58.1e5e76934825987adf85c136bb74c9ea.jpeg_gs3we6.webp",
+        "category": "Smart Home"
+    },
+    {
+        "id": 19,
+        "name": "Smart Doorbell",
+        "description": "Video doorbell with motion detection.",
+        "price": 149.99,
+        "category": "Smart Home",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693335/51S0Uib7-TL._AC_UF894_1000_QL80__mknlqt.jpg"
+    },
+    {
+        "id": 20,
+        "name": "Electric Toothbrush",
+        "description": "Rechargeable electric toothbrush.",
+        "price": 79.99,
+        "category": "Personal Care",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693335/71Ipo1ZbMFL_yc10p8.jpg"
+    },
+    {
+        "id": 21,
+        "name": "Tablet",
+        "description": "10-inch HD display tablet.",
+        "price": 249.99,
+        "category": "Electronics",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693335/633b51122af1ce605a57ae50-10-1_n4n7ul.jpg"
+    },
+    {
+        "id": 22,
+        "name": "Gaming Chair",
+        "description": "Ergonomic gaming chair.",
+        "price": 199.99,
+        "category": "Furniture",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693334/GTPLAYER-Gaming-Chair-with-Footrest-and-Ergonomic-Lumbar-Massage-Pillow-Faux-Leather-Office-Chair-White_86133479-a937-469b-bf4f-90a3f05e6b93.2550a814977ea264f357b78c66fc3c04.jpeg_i61ssn.webp"
+    },
+    {
+        "id": 23,
+        "name": "Smart Scale",
+        "description": "Bluetooth body composition scale.",
+        "price": 49.99,
+        "category": "Health & Fitness",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693334/613YrrWFKGL_kit1qb.jpg"
+    },
+    {
+        "id": 24,
+        "name": "Laptop Stand",
+        "description": "Adjustable aluminum laptop stand.",
+        "price": 29.99,
+        "category": "Accessories",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693778/6588e7b33e1e57517b45397b-workez-best-adjustable-laptop-stand-and_glnkrt.jpg"
+    },
+    {
+        "id": 25,
+        "name": "Phone Tripod",
+        "description": "Flexible phone tripod.",
+        "price": 24.99,
+        "category": "Photography",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693337/images-5_apzdc6.jpg"
+    },
+    {
+        "id": 26,
+        "name": "Wireless Mouse",
+        "description": "Rechargeable wireless mouse.",
+        "price": 19.99,
+        "category": "Accessories",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693334/Logitech-Silent-Wireless-Mouse-2-4-GHz-with-USB-Receiver-1000-DPI-Optical-Tracking-Black_ed3ac230-2b94-45b0-a201-627f4991f99e.628639fafa9e91c71e292a33702cf4a9.jpeg_t1kgey.webp"
+    },
+    {
+        "id": 27,
+        "name": "Smart Plug",
+        "description": "Wi-Fi smart plug.",
+        "price": 12.99,
+        "category": "Smart Home",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693334/41FJ6hLo09L._SL1100__bwjmow.jpg"
+    },
+    {
+        "id": 28,
+        "name": "USB-C Hub",
+        "description": "Multiport USB-C adapter.",
+        "price": 39.99,
+        "category": "Accessories",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693335/61Bm_9UTP6L._AC_UF894_1000_QL80__sbhxly.jpg"
+    },
+    {
+        "id": 29,
+        "name": "Streaming Stick",
+        "description": "4K streaming media player.",
+        "price": 49.99,
+        "category": "Entertainment",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693335/51JMXGSMcTL_v2yimo.jpg"
+    },
+    {
+        "id": 30,
+        "name": "Coffee Maker",
+        "description": "Single-serve coffee maker.",
+        "price": 89.99,
+        "category": "Kitchen Appliances",
+        "imageUrl": "https://res.cloudinary.com/dnjyjohze/image/upload/v1739693334/Mainstays-5-Cup-Coffee-Maker_16f77040-27ab-4008-9852-59c900d7a7d9_1.c524f1d9c465e122596bf65f939c8d26.jpeg_bclhjb.webp"
+    }
+]

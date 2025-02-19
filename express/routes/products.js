@@ -8,19 +8,19 @@ router.get("/", (req, res) => {
     if (query) {
         console.log(query);
         if (query) {
-            const filteredTodos = helpers.list(query);
+            const filteredTodos = helpers.getProducts(query);
             res.json(filteredTodos);
         }
     } else {
-        const todos = helpers.list("");
-        res.json(todos);
+        const products = helpers.getProducts();
+        res.json(products);
     }
 
 });
 
 router.get("/:id", (req, res) => {
-    const todo = helpers.getTodoById(req.params.id);
-    res.json(todo);
+    const product = helpers.getProductById(req.params.id);
+    res.json(product);
 });
 
 router.post("/", (req, res) => {
