@@ -11,6 +11,7 @@ dotenv.config();  // Load environment variables
 
 const app = express();
 
+const port = process.env.PORT || 3000;
 const SECRET_KEY = process.env.JWT_SECRET || 'secret'; // Use environment variables in production
 app.use(express.json());
 app.use(cors()); // Allow all origins
@@ -78,13 +79,14 @@ const authenticateToken = (req, res, next) => {
 };
 app.use("/auth", authenticateToken);
 app.use("/user", authenticateToken);
-// app.listen(port, (err) => {
-//     if (!err) {
-//         console.log(`Server running on port ${port}`);
-//     } else {
-//         console.log(err);
-//     }
-// });
+
+app.listen(port, (err) => {
+    if (!err) {
+        console.log(`Server running on port ${port}`);
+    } else {
+        console.log(err);
+    }
+});
 
 
 
@@ -97,4 +99,4 @@ app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 
-export default app;
+// export default app;
