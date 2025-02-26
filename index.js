@@ -76,13 +76,13 @@ const authenticateToken = (req, res, next) => {
 };
 app.use("/auth", authenticateToken);
 app.use("/user", authenticateToken);
-app.listen(port, (err) => {
-    if (!err) {
-        console.log(`Server running on port ${port}`);
-    } else {
-        console.log(err);
-    }
-});
+// app.listen(port, (err) => {
+//     if (!err) {
+//         console.log(`Server running on port ${port}`);
+//     } else {
+//         console.log(err);
+//     }
+// });
 
 
 
@@ -95,4 +95,4 @@ app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 
-export default client;
+export default app;
