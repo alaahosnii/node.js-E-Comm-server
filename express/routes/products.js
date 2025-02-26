@@ -1,32 +1,61 @@
-const express = require("express");
+import express from "express";
+import { getFlashSales, getNewArrivals, getProductById, getProducts, getRelatedProducts, insertFlashSales, insertPorducts } from "../helpers/index.js";
 const router = express.Router();
-const helpers = require("../helpers");
 
-router.get("/", (req, res) => {
-    const { query } = req.query;
+router.get("/", async (req, res) => {
+    const products = await getProducts();
+    res.json(products);
+});
 
-    if (query) {
-        console.log(query);
-        if (query) {
-            const filteredTodos = helpers.getProducts(query);
-            res.json(filteredTodos);
-        }
+router.get("/related/:id", async (req, res) => {
+    const products = await getRelatedProducts(req.params.id);
+    res.json(products);
+})
+router.get("/:id", async (req, res) => {
+    const product = await getProductById(req.params.id);
+    if (product) {
+        res.json(product);
     } else {
-        const products = helpers.getProducts();
-        res.json(products);
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong",
+        });
     }
-
 });
 
-router.get("/:id", (req, res) => {
-    const product = helpers.getProductById(req.params.id);
-    res.json(product);
+router.get("/newarrivals/:category", async (req, res) => {
+    const products = await getNewArrivals(req.params.category);
+    if (products && products.length > 0) {
+        res.json({
+            products: products,
+        });
+    } else {
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong",
+        });
+    }
 });
 
-router.post("/", (req, res) => {
-    console.log(req.body);
-    const todo = helpers.addTodo(req.body);
-    res.json(todo);
+router.post("/", async (req, res) => {
+    const body = req.body;
+    await insertPorducts(body);
+    res.json({
+        status: true,
+        message: "Products Added Scucessfully",
+    });
+});
+
+router.get("/flashsales", async (req, res) => {
+    const flashSales = await getFlashSales();
+    if (flashSales && flashSales.length > 0) {
+        res.json(flashSales);
+    } else {
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong",
+        });
+    }
 });
 
 router.put("/:id", (req, res) => {
@@ -34,20 +63,36 @@ router.put("/:id", (req, res) => {
     console.log(todoId);
     const toBeEditTodo = req.body;
 
-    helpers.edit(toBeEditTodo, todoId);
+    edit(toBeEditTodo, todoId);
     res.json({
-        status: "Ok",
+        status: true,
         message: "Edited Scucessfully",
     });
 });
 
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
-    helpers.deleteTask(id);
+    deleteTask(id);
     res.json({
-        status: "Ok",
+        status: true,
         message: "Deleted Scucessfully",
     });
 });
 
-module.exports = router;
+// router.post("/flashsales", async (req, res) => {
+//     const body = req.body;
+//     const flashSales = await insertFlashSales(body);
+//     if (flashSales) {
+//         res.status(201).json({
+//             status: true,
+//             message: "Flash Sales Updated Scucessfully",
+//         });
+//     } else {
+//         res.status(400).json({
+//             status: false,
+//             message: "Something went wrong",
+//         });
+//     }
+// });
+
+export default router;
