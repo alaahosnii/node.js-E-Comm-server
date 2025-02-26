@@ -6,8 +6,10 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import { createFileIfNotExist } from "./helpers/index.js";
 import client from "./mongoDbClient/index.js";
+import dotenv from "dotenv";
+dotenv.config();  // Load environment variables
+
 const app = express();
-const port = process.env.PORT || 3000; 
 
 const SECRET_KEY = process.env.JWT_SECRET || 'secret'; // Use environment variables in production
 app.use(express.json());
