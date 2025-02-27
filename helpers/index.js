@@ -70,6 +70,26 @@ export const userIsExist = async (userObj) => {
     // const userFound = users.find(user => user.email == userObj.email);
     // return userFound;
 }
+
+export const updateUser = async (updatedUser , currentUser) => {
+    console.log("userObj", updatedUser);
+    
+    const myDB = client.db("E-Commerce");
+    const usersCollection = myDB.collection("users");
+    const result = await usersCollection.updateOne(
+        { email: currentUser.email },
+        {
+            $set: {
+                ...updatedUser
+            }
+        }
+    );
+    if (result.modifiedCount == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
 export const getProductById = async (id) => {
     // const products = JSON.parse(fs.readFileSync("./products.json", "utf-8"));
     // const product = products.find((product) => product.id == id);
@@ -211,7 +231,7 @@ export const refreshToken = (user) => {
     const payload = {
         name: user.name,
         email: user.email,
-        id: user.id
+        password: user.password
     };
     return jwt.sign(payload, SECRET_KEY, {
         expiresIn: "1h"
