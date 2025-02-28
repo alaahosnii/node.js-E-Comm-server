@@ -94,8 +94,8 @@ router.get("/favorites", async (req, res) => {
     const favorites = await getFavoriteProducts(req.user.email);
     if (favorites) {
         if (favorites.length == 0) {
-            res.status(400).json({
-                status: false,
+            res.status(200).json({
+                status: true,
                 products: []
             });
             return;
