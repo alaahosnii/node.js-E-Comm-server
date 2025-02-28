@@ -29,7 +29,7 @@ router.get("/clientsecret", async (req, res) => {
             "email": requestBody.email,
             "state": requestBody.state,
         },
-        "redirection_url": "https://www.google.com/"
+        "redirection_url": "http://localhost:5173/paymentsuccess"
     });
 
     const paymobResponse = await fetch("https://accept.paymob.com/v1/intention/", {
