@@ -2,6 +2,7 @@ import express from "express";
 import productsRouter from "./routes/products.js";
 import authRouter from "./routes/auth.js";
 import userRouter from "./routes/user.js";
+import paymentRouter from "./routes/payment.js";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import { createFileIfNotExist } from "./helpers/index.js";
@@ -79,6 +80,7 @@ const authenticateToken = (req, res, next) => {
 };
 app.use("/auth", authenticateToken);
 app.use("/user", authenticateToken);
+app.use("/payment", authenticateToken);
 
 app.listen(port, (err) => {
     if (!err) {
@@ -98,5 +100,6 @@ await run();
 app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use("/payment", paymentRouter);
 
 // export default app;
