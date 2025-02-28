@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { userIsExist, addUser, refreshToken, getUsers, generateToken, addCartToUser, getUserCart } from "../helpers/index.js";
+import { userIsExist, addUser, refreshToken, getUsers, generateToken, addCartToUser, getUserCart, insertFavoritesPorducts, getFavoriteProducts } from "../helpers/index.js";
 
 // router.post("/register", async(req, res) => {
 //     const user = req.body;
@@ -80,6 +80,37 @@ router.post("/cart", async (req, res) => {
         cart: user.cart
     })
 })
+
+router.post("/favorites", async (req, res) => {
+    const body = req.body;
+    await insertFavoritesPorducts(body , req.user);
+    res.json({
+        status: true,
+        message: "Favorites Added Scucessfully",
+    });
+});
+
+router.get("/favorites", async (req, res) => {
+    const favorites = await getFavoriteProducts(req.user.email);
+    if (favorites) {
+        if (favorites.length == 0) {
+            res.status(400).json({
+                status: false,
+                products: []
+            });
+            return;
+        }
+        res.status(200).json({
+            status: true,
+            products: favorites
+        });
+    } else {
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong",
+        });
+    }
+});
 
 router.get("/cart", async (req, res) => {
     const user = req.user;

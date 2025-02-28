@@ -46,37 +46,6 @@ router.post("/", async (req, res) => {
     });
 });
 
-router.post("/favorites", async (req, res) => {
-    const body = req.body;
-    await insertFavoritesPorducts(body);
-    res.json({
-        status: true,
-        message: "Favorites Added Scucessfully",
-    });
-});
-
-router.get("/favorites", async (req, res) => {
-    const favorites = await getFavoriteProducts();
-    if (favorites) {
-        if (favorites.length == 0) {
-            res.status(400).json({
-                status: false,
-                products: []
-            });
-            return;
-        }
-        res.status(200).json({
-            status: true,
-            products: favorites
-        });
-    } else {
-        res.status(400).json({
-            status: false,
-            message: "Something went wrong",
-        });
-    }
-});
-
 
 
 router.get("/flashsales", async (req, res) => {

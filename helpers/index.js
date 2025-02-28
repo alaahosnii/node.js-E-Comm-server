@@ -71,9 +71,9 @@ export const userIsExist = async (userObj) => {
     // return userFound;
 }
 
-export const updateUser = async (updatedUser , currentUser) => {
+export const updateUser = async (updatedUser, currentUser) => {
     console.log("userObj", updatedUser);
-    
+
     const myDB = client.db("E-Commerce");
     const usersCollection = myDB.collection("users");
     const result = await usersCollection.updateOne(
@@ -136,11 +136,18 @@ export const insertPorducts = async (products) => {
     }
 }
 
-export const insertFavoritesPorducts = async (products) => {
+export const insertFavoritesPorducts = async (products , user) => {
     try {
         const myDB = client.db("E-Commerce");
-        const productsCollection = myDB.collection("favorites");
-        return await productsCollection.insertMany(products);
+        const usersCollection = myDB.collection("users");
+        await usersCollection.updateOne(
+            { email: user.email },
+            {
+                $set: {
+                    favorites: products
+                }
+            }
+        );
     } catch (error) {
         console.log(error);
 
@@ -230,12 +237,20 @@ export const getProducts = async () => {
 
 }
 
-export const getFavoriteProducts = async () => {
-    const myDb = client.db("E-Commerce");
-    const productsCollection = myDb.collection("favorites");
-    const products = await productsCollection.find({}).toArray();
+export const getFavoriteProducts = async (email) => {
+    const myDB = client.db("E-Commerce");
+    const usersCollection = myDB.collection("users");
+    const favorites = await usersCollection.findOne({
+        email: email
+    }, {
+        projection: {
+            _id: 0,
+            favorites: 1
+        }
+    });
+    // console.log(cart);
 
-    return products;
+    return favorites;
 }
 
 export const generateToken = (user) => {
