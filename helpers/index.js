@@ -136,6 +136,17 @@ export const insertPorducts = async (products) => {
     }
 }
 
+export const insertFavoritesPorducts = async (products) => {
+    try {
+        const myDB = client.db("E-Commerce");
+        const productsCollection = myDB.collection("favorites");
+        return await productsCollection.insertMany(products);
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+
 export const getNewArrivals = async (category) => {
     const myDb = client.db("E-Commerce");
     const productsCollection = myDb.collection("new arrivals");
@@ -217,6 +228,14 @@ export const getProducts = async () => {
     return products;
     // return JSON.parse(fs.readFileSync("./products.json", "utf-8"));
 
+}
+
+export const getFavoriteProducts = async () => {
+    const myDb = client.db("E-Commerce");
+    const productsCollection = myDb.collection("favorites");
+    const products = await productsCollection.find({}).toArray();
+
+    return products;
 }
 
 export const generateToken = (user) => {

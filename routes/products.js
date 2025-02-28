@@ -1,5 +1,5 @@
 import express from "express";
-import { getFlashSales, getNewArrivals, getProductById, getProducts, getRelatedProducts, insertFlashSales, insertPorducts } from "../helpers/index.js";
+import { getFavoriteProducts, getFlashSales, getNewArrivals, getProductById, getProducts, getRelatedProducts, insertFavoritesPorducts, insertFlashSales, insertPorducts } from "../helpers/index.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -45,6 +45,29 @@ router.post("/", async (req, res) => {
         message: "Products Added Scucessfully",
     });
 });
+
+router.post("/favorites", async (req, res) => {
+    const body = req.body;
+    await insertFavoritesPorducts(body);
+    res.json({
+        status: true,
+        message: "Favorites Added Scucessfully",
+    });
+});
+
+router.get("/favorites", async (req, res) => {
+    const favorites = await getFavoriteProducts();
+    if (favorites && favorites.length > 0) {
+        res.status(200).json(favorites);
+    } else {
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong",
+        });
+    }
+});
+
+
 
 router.get("/flashsales", async (req, res) => {
     const flashSales = await getFlashSales();
