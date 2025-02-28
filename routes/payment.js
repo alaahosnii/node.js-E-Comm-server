@@ -2,17 +2,17 @@ import { json } from "express";
 import express from "express";
 const router = express.Router();
 
-router.post("/clientsecret", async (req, res) => {
+router.get("/clientsecret", async (req, res) => {
     const SECRET_KEY = process.env.PAYMOB_KEY || "egy_sk_test_fa0c12f04551b1aa39a80763f28ebbbf71ceec80c0a57f73bb95d1aee5758890";
     console.log(SECRET_KEY);
-    
-    const requestBody = req.body;
+
+    const requestBody = req.query;
     console.log(requestBody);
 
     let amount = requestBody.amount;
     amount = amount * 100;
     console.log("amount", amount);
-    
+
     const body = JSON.stringify({
         "amount": amount,
         "currency": "EGP",
@@ -23,7 +23,7 @@ router.post("/clientsecret", async (req, res) => {
             "apartment": requestBody.apartment,
             "first_name": requestBody.firstName,
             "last_name": requestBody.lastName,
-            "street": requestBody.street,
+            "street": requestBody.streetAddress,    
             "phone_number": requestBody.phone,
             "country": "egypt",
             "email": requestBody.email,
@@ -45,9 +45,16 @@ router.post("/clientsecret", async (req, res) => {
     console.log(paymobResponse);
     const paymobData = await paymobResponse.json();
     if (paymobResponse.ok) {
-        res.json({
+        console.log("secret" , paymobData.client_secret);
+        
+        res.status(200).json({
             status: true,
             clientSecret: paymobData.client_secret
+        });
+    } else {
+        res.status(400).json({
+            status: false,
+            message: "Something went wrong"
         });
     }
 });
