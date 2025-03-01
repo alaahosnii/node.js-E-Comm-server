@@ -1,12 +1,18 @@
 import express from "express";
+import bcrypt from "bcrypt";
 const router = express.Router();
 import { userIsExist, addUser, refreshToken, getUsers, generateToken, updateUser } from "../helpers/index.js";
 
 router.post("/register", async (req, res) => {
     const user = req.body;
-
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+    const updatedUser = {
+        ...user,
+        password: hashedPassword
+    }
     if (user) {
-        if (await userIsExist(user)) {
+        if (await userIsExist(updatedUser)) {
             res.status(400).json({
                 status: false,
                 message: "User Already Exists",
@@ -14,7 +20,7 @@ router.post("/register", async (req, res) => {
             return;
         }
 
-        await addUser(user);
+        await addUser(updatedUser);
         res.status(201).json({
             status: true,
             message: "User Registered Scucessfully",
@@ -72,8 +78,8 @@ router.patch("/updateUser", async (req, res) => {
     if (result) {
         const updatedUser = req.body;
         console.log("user", updatedUser);
-        
-        const isUpdated = await updateUser(updatedUser , user);
+
+        const isUpdated = await updateUser(updatedUser, user);
         if (isUpdated) {
             const newToken = generateToken(updatedUser);
             res.status(200).json({
@@ -99,9 +105,10 @@ router.patch("/updateUser", async (req, res) => {
 router.post("/login", async (req, res) => {
     const userBody = req.body;
     const userFound = await userIsExist(userBody);
+    const isPasswordMatch = await bcrypt.compare(userBody.password, userFound.password);
     if (userFound) {
 
-        if (userFound.password == userBody.password) {
+        if (isPasswordMatch) {
             const token = generateToken(userFound);
             res.status(201).json({
                 status: "Ok",
@@ -110,7 +117,7 @@ router.post("/login", async (req, res) => {
                     id: userFound._id,
                     name: userFound.name,
                     email: userFound.email,
-                    password: userFound.password
+                    password: userBody.password
                 },
                 token: token,
             });
