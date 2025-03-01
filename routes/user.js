@@ -91,9 +91,9 @@ router.post("/favorites", async (req, res) => {
 });
 
 router.get("/favorites", async (req, res) => {
-    const favorites = await getFavoriteProducts(req.user.email);
-    if (favorites) {
-        if (favorites.length == 0) {
+    const result = await getFavoriteProducts(req.user.email);
+    if (result) {
+        if (result.favorites.length == 0) {
             res.status(200).json({
                 status: true,
                 products: []
@@ -102,7 +102,7 @@ router.get("/favorites", async (req, res) => {
         }
         res.status(200).json({
             status: true,
-            products: favorites
+            products: result.favorites
         });
     } else {
         res.status(400).json({
