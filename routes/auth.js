@@ -105,9 +105,8 @@ router.patch("/updateUser", async (req, res) => {
 router.post("/login", async (req, res) => {
     const userBody = req.body;
     const userFound = await userIsExist(userBody);
-    const isPasswordMatch = await bcrypt.compare(userBody.password, userFound.password);
     if (userFound) {
-
+        const isPasswordMatch = await bcrypt.compare(userBody.password, userFound.password);
         if (isPasswordMatch) {
             const token = generateToken(userFound);
             res.status(201).json({
@@ -130,7 +129,7 @@ router.post("/login", async (req, res) => {
     } else {
         res.status(400).json({
             status: "Error",
-            message: "Invalid Email",
+            message: "User Not Found",
         });
     }
 });
