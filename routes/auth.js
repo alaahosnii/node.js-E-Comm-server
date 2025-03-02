@@ -74,6 +74,9 @@ router.get("/refreshToken", (req, res) => {
 
 router.patch("/updateUser", async (req, res) => {
     const user = req.user;
+    console.log("userrrrr" , user);
+    delete user.password , user.cart , user.favorites , _id , user.iat , user.exp;
+    
     const result = await userIsExist(user);
     if (result) {
         const updatedUser = req.body;
@@ -81,7 +84,10 @@ router.patch("/updateUser", async (req, res) => {
 
         const isUpdated = await updateUser(updatedUser, user);
         if (isUpdated) {
-            const newToken = generateToken(updatedUser);
+            const newToken = generateToken({
+                ...user,
+                ...updatedUser,
+            });
             res.status(200).json({
                 status: true,
                 message: "User Updated Successfully",

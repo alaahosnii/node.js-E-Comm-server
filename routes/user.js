@@ -114,6 +114,8 @@ router.get("/favorites", async (req, res) => {
 
 router.get("/cart", async (req, res) => {
     const user = req.user;
+    console.log("user cart" , user);
+    
     const cart = await getUserCart(user.email);
     console.log("carttt");
 
