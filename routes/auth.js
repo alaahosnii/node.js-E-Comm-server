@@ -73,11 +73,11 @@ router.get("/refreshToken", (req, res) => {
 });
 
 router.patch("/updateUser", async (req, res) => {
-    const user = req.user;
-    console.log("userrrrr" , user);
-    delete user.password , user.cart , user.favorites , _id , user.iat , user.exp;
-    
+    let user = req.user;
+    delete user.exp , delete user.iat;
+    console.log("userrrrr" , user);    
     const result = await userIsExist(user);
+
     if (result) {
         const updatedUser = req.body;
         console.log("user", updatedUser);
